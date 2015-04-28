@@ -25,11 +25,11 @@ Back in the Main Activity, the user will be able to toggle the Done checkbox to 
 
 
 ## What you have to do
-First of all, fork this repository into your own GutHub profile;
-After that, clone the code into your computer;
-Then you need to look for every TODO in project and implement the code;
-Run all tests and fix every bug until all tests are passing;
-To finish, send to your interviewer the url to the GitHub repository.
+1. First of all, fork this repository into your own GutHub profile;
+2. After that, clone the code into your computer;
+3. Then you need to look for every TODO in project and implement the code;
+4. Run all tests and fix every bug until all tests are passing;
+5. To finish, send to your interviewer the url to the GitHub repository.
 
 ### What you may do (only if you want to cause a good impression)
 1. Right now the ToDo manager is quite ugly. Try modifying the layout files to create more attractive and useable layouts. For example, play with the font size of the text, the amount of padding around the elements, background colors and more;
