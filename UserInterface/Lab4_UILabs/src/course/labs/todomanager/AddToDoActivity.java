@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -62,7 +63,7 @@ public class AddToDoActivity extends Activity {
 		// OnClickListener for the Date button, calls showDatePickerDialog() to
 		// show the Date dialog
 
-		final Button datePickerButton = (Button) findViewById(R.id.date_picker_button);
+		final ImageButton datePickerButton = (ImageButton) findViewById(R.id.date_picker_button);
 		datePickerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -74,7 +75,7 @@ public class AddToDoActivity extends Activity {
 		// OnClickListener for the Time button, calls showTimePickerDialog() to
 		// show the Time Dialog
 
-		final Button timePickerButton = (Button) findViewById(R.id.time_picker_button);
+		final ImageButton timePickerButton = (ImageButton) findViewById(R.id.time_picker_button);
 		timePickerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -85,29 +86,30 @@ public class AddToDoActivity extends Activity {
 
 		// OnClickListener for the Cancel Button,
 
-		final Button cancelButton = (Button) findViewById(R.id.cancelButton);
+		final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancelButton);
 		cancelButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-
-
 				// TODO - Indicate result and finish
+                setResult(RESULT_CANCELED);
+                finish();
 
-                
-                
 			}
 		});
 
 		// TODO - Set up OnClickListener for the Reset Button
-		final Button resetButton = (Button) findViewById(R.id.resetButton);
+		final ImageButton resetButton = (ImageButton) findViewById(R.id.resetButton);
 		resetButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
 
 				// TODO - Reset data to default values
+                mTitleText.setText("");
 
+                mPriorityRadioGroup.check(R.id.medPriority);
+                mStatusRadioGroup.check(R.id.statusNotDone);
 
                 
                 
@@ -120,7 +122,7 @@ public class AddToDoActivity extends Activity {
 
 		// Set up OnClickListener for the Submit Button
 
-		final Button submitButton = (Button) findViewById(R.id.submitButton);
+		final ImageButton submitButton = (ImageButton) findViewById(R.id.submitButton);
 		submitButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -130,15 +132,13 @@ public class AddToDoActivity extends Activity {
 
 
 				// TODO - Get the current Priority
-				Priority priority = null;
+				Priority priority = getPriority();
 
 				// TODO - Get the current Status
-				Status status = null;
+				Status status = getStatus();
 
 				// TODO - Get the current ToDoItem Title
-
-
-				String titleString = null;
+                String titleString = mTitleText.getText().toString();
 
 
 				// Construct the Date string
@@ -150,6 +150,12 @@ public class AddToDoActivity extends Activity {
 						fullDate);
 
 				// TODO - return data Intent and finish
+                Intent intent = new Intent();
+                ToDoItem.packageIntent(intent, titleString, priority, status, fullDate);
+
+                setResult(RESULT_OK, intent);
+
+                finish();
 
 
 

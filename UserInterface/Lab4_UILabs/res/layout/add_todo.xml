@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#FFFF">
 
     <!-- Title -->
 
@@ -11,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" >
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF6600">
     </TextView>
 
     <EditText
@@ -23,7 +25,8 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="@string/enter_title_string" 
-        android:inputType="textShortMessage">
+        android:inputType="textShortMessage"
+        android:textColor="#CCCCCC">
 
         <requestFocus />
     </EditText>
@@ -36,9 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/title"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/status_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF6600"/>
 
     <RadioGroup
         android:id="@+id/statusGroup"
@@ -53,14 +57,16 @@
             android:id="@+id/statusDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/done_string" />
+            android:text="@string/done_string"
+            android:textColor="#333333"/>
 
         <RadioButton
             android:id="@+id/statusNotDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/not_done_string" />
+            android:text="@string/not_done_string"
+            android:textColor="#333333"/>
     </RadioGroup>
 
     <!-- Priority -->
@@ -71,9 +77,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/statusGroup"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/priority_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF6600"/>
 
     <RadioGroup
         android:id="@+id/priorityGroup"
@@ -89,20 +96,23 @@
             android:id="@+id/lowPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/priority_low_string" />
+            android:text="@string/priority_low_string"
+            android:textColor="#333333"/>
 
         <RadioButton
             android:id="@+id/medPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/priority_medium_string" />
+            android:text="@string/priority_medium_string"
+            android:textColor="#333333"/>
 
         <RadioButton
             android:id="@+id/highPriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/priority_high_string" />
+            android:text="@string/priority_high_string"
+            android:textColor="#333333"/>
     </RadioGroup>
 
     <!-- Time and Date -->
@@ -113,9 +123,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/priorityGroup"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:text="@string/time_and_date_string"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF6600"/>
 
     <TextView
         android:id="@+id/date"
@@ -134,48 +145,55 @@
         android:layout_below="@+id/time_and_date"
         android:text="@string/no_time_set_string" />
 
-    <Button
+    <ImageButton
         android:id="@+id/date_picker_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/date"
-        android:text="@string/choose_date_string" />
 
-    <Button
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/date"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_action"/>
+
+    <ImageButton
         android:id="@+id/time_picker_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
         android:layout_alignTop="@id/date_picker_button"
         android:layout_below="@id/time"
-        android:text="@string/choose_time_string" />
+        android:src="@drawable/time"
+        android:background="@android:color/transparent"/>
 
     <!-- Buttons -->
 
-    <Button
+    <ImageButton
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="25dp"
-        android:text="@string/cancel_string" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/cancel_grande"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/reset_string" />
+        android:src="@drawable/reset_grande"
+        android:background="@android:color/transparent"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/submit_string" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/submit_grande"/>
 
 </RelativeLayout>

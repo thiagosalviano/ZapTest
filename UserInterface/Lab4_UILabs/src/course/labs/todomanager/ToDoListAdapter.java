@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -83,24 +85,27 @@ public class ToDoListAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		// TODO - Get the current ToDoItem
-		final ToDoItem toDoItem = null;
+		final ToDoItem toDoItem = (ToDoItem) getItem(position);
 
 
 		// TODO - Inflate the View for this ToDoItem
 		// from todo_item.xml
-		RelativeLayout itemLayout = null;
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View itemLayout = inflater.inflate(R.layout.todo_item, parent, false);
 
-		// Fill in specific ToDoItem data
+        // Fill in specific ToDoItem data
 		// Remember that the data that goes in this View
 		// corresponds to the user interface elements defined
 		// in the layout file
 
 		// TODO - Display Title in TextView
-		final TextView titleView = null;
+        final TextView titleView = (TextView) itemLayout.findViewById(R.id.titleView);
+        titleView.setText(toDoItem.getTitle());
 
 
 		// TODO - Set up Status CheckBox
-		final CheckBox statusView = null;
+        final CheckBox statusView = (CheckBox) itemLayout.findViewById(R.id.statusCheckBox);
+        statusView.setChecked(toDoItem.getStatus() == ToDoItem.Status.DONE);
 
 
 		// TODO - Must also set up an OnCheckedChangeListener,
@@ -111,21 +116,29 @@ public class ToDoListAdapter extends BaseAdapter {
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
 
+                        if (isChecked){
+                            toDoItem.setStatus(ToDoItem.Status.DONE);
+                            itemLayout.setBackgroundColor(Color.parseColor("#FF6600"));
+                        }
+                        else{
+                            toDoItem.setStatus(ToDoItem.Status.NOTDONE);
+                            itemLayout.setBackgroundColor(Color.parseColor("#0099FF"));
+                        }
 
 
-                        
-                        
-                        
-					}
+
+                    }
 				});
 
 		// TODO - Display Priority in a TextView
-		final TextView priorityView = null;
+        final TextView priorityView = (TextView) itemLayout.findViewById(R.id.PriorityLabel);
+        priorityView.setText(toDoItem.getPriority().toString());
 
 
 
 		// TODO - Display Time and Date.
-		final TextView dateView = null;
+        final TextView dateView = (TextView) itemLayout.findViewById(R.id.dateView);
+        dateView.setText(toDoItem.getDate().toString());
 
 		// Return the View you just created
 		return itemLayout;
